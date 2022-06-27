@@ -24,7 +24,7 @@ Based on the above limitations, the following problems arise:
 1. Unable to debug system processes, such as: `Cydia`、`Safiri`
 2. Unable to debug the app downloaded from `AppStore`, the app needs to be re-signed after smashing the shell
 
-To solve the above problems, you need to use `debugserver` with high permissions. For the specific configuration process, you can refer to the article [Tips and Problem Handling for Configuring DebugServer + lldb Debugging Environment under iOS12](https://iosre.com/t /ios12-debugserver-lldb/14429).
+To solve the above problems, you need to use `debugserver` with high permissions. For the specific configuration process, you can refer to the article [Tips and Problem Handling for Configuring DebugServer + lldb Debugging Environment under iOS12](https://iosre.com/t/ios12-debugserver-lldb/14429).
 
 To solve the above limitations, you need to install this tweak.
 
