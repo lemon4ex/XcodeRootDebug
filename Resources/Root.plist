@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Options</string>
+			<key>footerText</key>
+			<string>It must be ensured that the Debug Server is properly configured and has executable permissions</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.byteage.xcoderootdebug</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string>/usr/bin/debugserver</string>
+			<key>defaults</key>
+			<string>com.byteage.xcoderootdebug</string>
+			<key>key</key>
+			<string>debugserverPath</string>
+			<key>label</key>
+			<string>Debug Server</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.byteage.xcoderootdebug</string>
+			<key>key</key>
+			<string>isRootUser</string>
+			<key>label</key>
+			<string>Permit Root</string>
+		</dict>
+		<dict>
+			<key>label</key>
+			<string>Other</string>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Click to make sure the new setting takes effect</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>action</key>
+			<string>saveSetting</string>
+			<key>isDestructive</key>
+			<true/>
+			<key>label</key>
+			<string>Save Settings</string>
+		</dict>
+		<dict>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Developed ❤ by h4ck1n</string>
+		</dict>
+		<dict>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>© 2022 All Rights Reserved by ByteAge.com</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>XcodeRootDebug</string>
+</dict>
+</plist>

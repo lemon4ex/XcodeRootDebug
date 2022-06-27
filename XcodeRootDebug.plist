@@ -1,0 +1,7 @@
+{
+	Filter = {
+		Executables = (
+			lockdownd,
+		);
+	};
+}
