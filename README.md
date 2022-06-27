@@ -4,7 +4,7 @@ Allows `xcode` to start a custom `debugserver` with `root` privileges for debugg
 
 Currently only tested on the following jailbroken devices:
 
-* iPhone 6s 14.3
+* iPhone 6s 14.2
 * iPhone 7 13.6.1
 * iPhone 11 Pro 14.2
 
@@ -43,7 +43,7 @@ You can set the tweak in settings。
 
 目前只在以下越狱设备上进行了测试：
 
-* iPhone 6s 14.3
+* iPhone 6s 14.2
 * iPhone 7 13.6.1
 * iPhone 11 Pro 14.2
 
