@@ -2,7 +2,7 @@ Package: com.byteage.xcoderootdebug
 Name: XcodeRootDebug
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: 允许xcode使用root权限启动自定义的debugserver进行调试
+Description: Allows Xcode to start a custom debugserver with root privileges for debugging.
 Maintainer: h4ck1n
 Author: h4ck1n
 Section: Tweaks
