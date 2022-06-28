@@ -1,6 +1,6 @@
 # XcodeRootDebug
 
-Allows `xcode` to start a custom `debugserver` with `root` privileges for debugging.
+Allow `xcode` to start a custom `debugserver` with `root` privileges to debug iOS apps.
 
 Currently only tested on the following jailbroken devices:
 
@@ -39,7 +39,7 @@ You can set the tweak in settings。
 
 # XcodeRootDebug
 
-允许`xcode`使用`root`权限启动自定义的`debugserver`进行调试。
+允许`xcode`使用`root`权限启动自定义的`debugserver`调试iOS应用。
 
 目前只在以下越狱设备上进行了测试：
 
