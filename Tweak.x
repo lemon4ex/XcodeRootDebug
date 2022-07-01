@@ -70,12 +70,12 @@ bool hooked_SMJobSubmit(CFStringRef domain, CFDictionaryRef job, AuthorizationRe
 	if (enabled) {
 		if([program isEqualToString:@"/Developer/usr/bin/debugserver"]) {
 			LOG("Found launch /Developer/usr/bin/debugserver");
-			if(debugserverPath.length > 0 && access(debugserverPath.UTF8String, F_OK | X_OK) == 0){
+			if(debugserverPath.length > 0 && access(debugserverPath.UTF8String, F_OK) == 0){
 				LOG("Change to launch %@", debugserverPath);
 				programArgs[0] = debugserverPath;
 				newJobInfo[@"ProgramArguments"] = programArgs;
 			} else {
-				LOG("Debug Server does not exist at %@, or does not have executable permissions", debugserverPath);
+				LOG("Debug Server does not exist at %@", debugserverPath);
 			}
 			if(isRootUser) {
 				LOG("Change to launch with root");
