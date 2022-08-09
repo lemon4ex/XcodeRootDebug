@@ -32,6 +32,10 @@ After installing this tweak, it will allow developers to use `xcode` to start a 
 
 You can set the tweak in settings。
 
+# Article
+
+You can read [this post](https://byteage.com/154.html?from=github) to get some information.
+
 # ScreenShots
 
 ![](ScreenShots/20220627_235849.png)
@@ -70,6 +74,9 @@ Cydia 源：https://repo.byteage.com
 安装本插件以后，将允许开发者使用`xcode`以`root`权限启动自定义的`debugserver`进行调试。
 
 你可以在设置中对插件进行设置。
+
+# 文章
+* [让 Xcode 支持使用 root 权限调试 iOS 设备上的任何应用或进程](https://byteage.com/154.html?from=github)
 
 # 截图
 ![](ScreenShots/20220627_235849.png)
