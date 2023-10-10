@@ -8,6 +8,7 @@
 
 * iPhone 6s 14.2
 * iPhone 7 13.6.1
+* iPhone X 16.6.1
 * iPhone 11 Pro 14.2
 
 理论上支持iOS10以上设备，包括A12。

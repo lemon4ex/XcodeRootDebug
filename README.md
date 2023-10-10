@@ -8,6 +8,7 @@ Currently only tested on the following jailbroken devices:
 
 * iPhone 6s 14.2
 * iPhone 7 13.6.1
+* iPhone X 16.6.1
 * iPhone 11 Pro 14.2
 
 Theoretically supports iOS10 and above devices, including A12.
