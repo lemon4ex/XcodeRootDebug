@@ -62,14 +62,17 @@ typedef CFTypeRef AuthorizationRef;
 
 bool (*original_SMJobSubmit)(CFStringRef domain, CFDictionaryRef job, AuthorizationRef auth, CFErrorRef _Nullable *error);
 
+static NSString *systemDebugserverPath;
+
 bool hooked_SMJobSubmit(CFStringRef domain, CFDictionaryRef job, AuthorizationRef auth, CFErrorRef _Nullable *error) {
 	LOG(@"Enter hooked_SMJobSubmit %@", job);
 	NSMutableDictionary *newJobInfo = [NSMutableDictionary dictionaryWithDictionary:(__bridge NSDictionary *)job];
 	NSMutableArray *programArgs = [newJobInfo[@"ProgramArguments"] mutableCopy];
 	NSString *program = programArgs[0];
 	if (enabled) {
-		if([program isEqualToString:@"/Developer/usr/bin/debugserver"]) {
-			LOG("Found launch /Developer/usr/bin/debugserver");
+		if([program isEqualToString:@"/Developer/usr/bin/debugserver"] || [program isEqualToString:@"/usr/libexec/debugserver"]) {
+			LOG("Found launch %@", program);
+			systemDebugserverPath = [program copy];
 			if(debugserverPath.length > 0 && access(debugserverPath.UTF8String, F_OK) == 0){
 				LOG("Change to launch %@", debugserverPath);
 				programArgs[0] = debugserverPath;
@@ -96,9 +99,9 @@ bool hooked_SMJobSubmit(CFStringRef domain, CFDictionaryRef job, AuthorizationRe
 		}
 	} else {
 		if([program isEqualToString:debugserverPath]) {
-			LOG("Found launch %@",debugserverPath);
-			LOG("Restore launch /Developer/usr/bin/debugserver with mobile");
-			programArgs[0] = @"/Developer/usr/bin/debugserver";
+			LOG("Found launch %@", debugserverPath);
+			LOG("Restore launch system debugserver at %@ with mobile", systemDebugserverPath);
+			programArgs[0] = systemDebugserverPath;
 			newJobInfo[@"ProgramArguments"] = programArgs;
 			newJobInfo[@"UserName"] = @"mobile";
 			LOG(@"Now SMJobSubmit %@", newJobInfo);
