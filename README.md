@@ -22,9 +22,10 @@ Repo：https://repo.byteage.com
 2. Download the source code, compile and install
 
 ## Configuration
-1. According to the device system version, find the corresponding dmg file in `Xcode`, such as `/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/14.3/DeveloperDiskImage.dmg`
-2. Double-click the dmg to mount and copy `/Volumes/DeveloperDiskImage/usr/bin/debugserver` to `~/Desktop/debugserver`
-3. Copy the following content and save it to `~/Desktop/debugserver.entitlements`
+1. Open the settings of your phone, find the XcodeRootDebug plug-in settings, enable the plug-in and ROOT permission switches, set the Debug Server to /usr/bin/debugserver, and save the settings
+2. According to the device system version, find the corresponding dmg file in `Xcode`, such as `/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/14.3/DeveloperDiskImage.dmg`
+3. Double-click the dmg to mount and copy `/Volumes/DeveloperDiskImage/usr/bin/debugserver` to `~/Desktop/debugserver`
+4. Copy the following content and save it to `~/Desktop/debugserver.entitlements`
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -69,16 +70,16 @@ Repo：https://repo.byteage.com
 </dict>
 </plist>
 ```
-4. Use `ldid` to sign new permissions on `debugserver`
+5. Use `ldid` to sign new permissions on `debugserver`
 ```shell
 cd ~/Desktop
 ldid -Sdebugserver.entitlements debugserver
 ```
-5. Copy the signed `debugserver` to the `/usr/bin/debugserver` path of the jailbroken device, and use the root user to give it executable permissions
+6. Copy the signed `debugserver` to the `/usr/bin/debugserver` path of the jailbroken device, and use the root user to give it executable permissions
 ```shell
 chmod +x /usr/bin/debugserver
 ```
-6. Execute `debugserver` to ensure normal operation
+7. Execute `debugserver` to ensure normal operation
 ```shell
 iPhone-X:~ root# debugserver
 debugserver-@(#)PROGRAM:LLDB PROJECT:lldb-1403.2.3.13
@@ -91,14 +92,15 @@ Usage:
   debugserver host:port --attach=<process_name>
   debugserver /path/file --attach=<process_name>
 ```
-7. Restart `lockdownd` on jailbroken device
+8. Restart `lockdownd` on jailbroken device
 ```shell
 killall lockdownd
 ```
-8. Connect the jailbroken device to the computer, open `Xcode`, and use the menu `Debug->Attach to Process by PID or Name...` or `Debug->Attach to Process` to attach to any process you want to debug.
+9. Connect the jailbroken device to the computer, open `Xcode`, and use the menu `Debug->Attach to Process by PID or Name...` or `Debug->Attach to Process` to attach to any process you want to debug.
 
 ## Known issues
 * If you use [Palera1n](https://palera.in/) jailbroken device, you must install the `ldid` from the official source `palera1n strap`, and then copy `debugserver.entitlements` and `debugserver` to the jailbroken device , and execute the `ldid -Sdebugserver.entitlements debugserver` command on the jailbroken device, otherwise `debugserver` cannot be started. The `ldid` of the official source has been modified. Only by using it to sign the executable program can the command line tool be executed normally, otherwise an error will be reported.
+* If you have any other questions, please submit an issue
 
 # Background
 
