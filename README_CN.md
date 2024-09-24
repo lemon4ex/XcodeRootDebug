@@ -23,9 +23,10 @@ Cydia 源：https://repo.byteage.com
 2. 下载源码，编译安装
 
 ## 配置
-1. 根据设备系统版本，在`Xcode`中找到对应的dmg文件，如`/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/14.3/DeveloperDiskImage.dmg`
-2. 双击dmg挂载，将`/Volumes/DeveloperDiskImage/usr/bin/debugserver`复制一份到`~/Desktop/debugserver`
-3. 复制下面的内容，保存到`~/Desktop/debugserver.entitlements`
+1. 打开手机设置，找到`XcodeRootDebug`插件设置，启用插件和ROOT权限开关，设置`Debug Server`为`/usr/bin/debugserver`，保存设置
+2. 根据设备系统版本，在`Xcode`中找到对应的dmg文件，如`/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/14.3/DeveloperDiskImage.dmg`
+3. 双击dmg挂载，将`/Volumes/DeveloperDiskImage/usr/bin/debugserver`复制一份到`~/Desktop/debugserver`
+4. 复制下面的内容，保存到`~/Desktop/debugserver.entitlements`
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -70,16 +71,16 @@ Cydia 源：https://repo.byteage.com
 </dict>
 </plist>
 ```
-4. 使用`ldid`给`debugserver`签上新的权限
+5. 使用`ldid`给`debugserver`签上新的权限
 ```shell
 cd ~/Desktop
 ldid -Sdebugserver.entitlements debugserver
 ```
-5. 将签名好的`debugserver`复制到越狱设备的`/usr/bin/debugserver`路径下，并使用root用户给它可执行权限
+6. 将签名好的`debugserver`复制到越狱设备的`/usr/bin/debugserver`路径下，并使用root用户给它可执行权限
 ```shell
 chmod +x /usr/bin/debugserver
 ```
-6. 执行`debugserver`，确保能够正常运行
+7. 执行`debugserver`，确保能够正常运行
 ```shell
 iPhone-X:~ root# debugserver
 debugserver-@(#)PROGRAM:LLDB  PROJECT:lldb-1403.2.3.13
@@ -92,15 +93,15 @@ Usage:
   debugserver host:port --attach=<process_name>
   debugserver /path/file --attach=<process_name>
 ```
-7. 在越狱设备上重启`lockdownd`
+8. 在越狱设备上重启`lockdownd`
 ```shell
 killall lockdownd
 ```
-8. 将越狱设备连接电脑，打开`Xcode`，使用菜单`Debug->Attach to Process by PID or Name ...`或`Debug->Attach to Process`附加到想要调试的任何进程
+9. 将越狱设备连接电脑，打开`Xcode`，使用菜单`Debug->Attach to Process by PID or Name ...`或`Debug->Attach to Process`附加到想要调试的任何进程
 
 ## 已知问题
 * 使用 [Palera1n](https://palera.in/) 越狱的设备，一定要安装官方源`palera1n strap`里的`ldid`，然后将`debugserver.entitlements`和`debugserver`拷贝到越狱设备中，并在越狱设备上执行`ldid -Sdebugserver.entitlements debugserver`命令，否则`debugserver`无法启动。官方源的`ldid`经过修改，使用它对可执行程序签名才能使命令行工具正常执行，否则会报错。
-
+* 有其他问题欢迎提交issue
 
 # 背景
 
