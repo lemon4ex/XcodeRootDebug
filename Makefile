@@ -6,7 +6,7 @@ INSTALL_TARGET_PROCESSES = lockdownd
 ifeq ($(THEOS_PACKAGE_SCHEME), rootless)
 TARGET = iphone:clang:latest:15.0
 else
-TARGET = iphone:clang:latest:14.0
+TARGET = iphone:clang:latest:9.0
 endif
 
 ARCHS = arm64 arm64e

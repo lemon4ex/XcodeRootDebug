@@ -3,6 +3,7 @@
 #import <Foundation/NSUserDefaults+Private.h>
 #include <unistd.h>
 #include <substrate.h>
+#import <rootless.h>
 
 extern char **environ;
 
@@ -20,7 +21,7 @@ static void reloadSettings() {
 	enabled = (enabledValue)? [enabledValue boolValue] : YES;
 	debugserverPath = [settings objectForKey:@"debugserverPath"];
 	if(!debugserverPath.length) {
-		debugserverPath = @"/usr/bin/debugserver";
+		debugserverPath = ROOT_PATH_NS(@"/usr/bin/debugserver");
 	}
 	NSNumber * isRootUserValue = (NSNumber *)[settings objectForKey:@"isRootUser"];
 	isRootUser = (isRootUserValue)? [isRootUserValue boolValue] : YES;
