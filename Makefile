@@ -1,10 +1,16 @@
 THEOS_DEVICE_IP = localhost -o StrictHostKeyChecking=no
 THEOS_DEVICE_PORT = 2222
 
-ARCHS = arm64 arm64e
-
-TARGET = iphone:clang:14.5:9.0
 INSTALL_TARGET_PROCESSES = lockdownd
+
+ifeq ($(THEOS_PACKAGE_SCHEME), rootless)
+TARGET = iphone:clang:latest:15.0
+else
+TARGET = iphone:clang:latest:9.0
+endif
+
+ARCHS = arm64 arm64e
+DEBUG = 0
 
 
 include $(THEOS)/makefiles/common.mk

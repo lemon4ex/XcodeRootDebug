@@ -3,6 +3,7 @@
 #import <Foundation/NSUserDefaults+Private.h>
 #include <unistd.h>
 #include <substrate.h>
+#import <rootless.h>
 
 extern char **environ;
 
@@ -14,14 +15,19 @@ static BOOL enabled;
 static NSString *debugserverPath;
 static BOOL isRootUser;
 
+static NSString* replaceDebugserverPath(NSString *path) {
+	NSString *newPath = [path stringByReplacingOccurrencesOfString:@"/var/jb" withString:@""];
+	return ROOT_PATH_NS(newPath);
+}
+
 static void reloadSettings() {
-	NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:@"/private/var/mobile/Library/Preferences/com.byteage.xcoderootdebug.plist"];
+	NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile: replaceDebugserverPath(@"/var/mobile/Library/Preferences/com.byteage.xcoderootdebug.plist")];
 	NSNumber * enabledValue = (NSNumber *)[settings objectForKey:@"enabled"];
 	enabled = (enabledValue)? [enabledValue boolValue] : YES;
-	debugserverPath = [settings objectForKey:@"debugserverPath"];
-	if(!debugserverPath.length) {
-		debugserverPath = @"/usr/bin/debugserver";
-	}
+
+	NSString *pref_dserverPath = [settings objectForKey:@"debugserverPath"] ?: @"";
+	debugserverPath = replaceDebugserverPath(!pref_dserverPath.length ? @"/usr/bin/debugserver" : pref_dserverPath);
+
 	NSNumber * isRootUserValue = (NSNumber *)[settings objectForKey:@"isRootUser"];
 	isRootUser = (isRootUserValue)? [isRootUserValue boolValue] : YES;
 }
