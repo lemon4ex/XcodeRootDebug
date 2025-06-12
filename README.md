@@ -11,6 +11,7 @@ Currently only tested on the following jailbroken devices:
 * iPhone 7 15.6.1
 * iPhone X 16.6.1
 * iPhone 11 Pro 14.2
+* iPhone X 16.7.11
 
 Theoretically supports iOS10 and above devices, including A12.
 
