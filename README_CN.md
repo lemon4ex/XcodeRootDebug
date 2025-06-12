@@ -101,6 +101,7 @@ killall lockdownd
 
 ## 已知问题
 * 使用 [Palera1n](https://palera.in/) 越狱的设备，一定要安装官方源`palera1n strap`里的`ldid`，然后将`debugserver.entitlements`和`debugserver`拷贝到越狱设备中，并在越狱设备上执行`ldid -Sdebugserver.entitlements debugserver`命令，否则`debugserver`无法启动。官方源的`ldid`经过修改，使用它对可执行程序签名才能使命令行工具正常执行，否则会报错。
+* iOS16.4 以后，`DeveloperDiskImage.dmg` 中将不再包含`debugserver`，`debugserver`已经内置在手机文件系统中，路径为`/usr/libexec/debugserver`。
 * 有其他问题欢迎提交issue
 
 # 背景

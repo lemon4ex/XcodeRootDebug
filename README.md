@@ -100,6 +100,7 @@ killall lockdownd
 
 ## Known issues
 * If you use [Palera1n](https://palera.in/) jailbroken device, you must install the `ldid` from the official source `palera1n strap`, and then copy `debugserver.entitlements` and `debugserver` to the jailbroken device , and execute the `ldid -Sdebugserver.entitlements debugserver` command on the jailbroken device, otherwise `debugserver` cannot be started. The `ldid` of the official source has been modified. Only by using it to sign the executable program can the command line tool be executed normally, otherwise an error will be reported.
+* After iOS16.4, the DeveloperDiskImage.dmg will no longer contain `debugserver`. `debugserver` has been built into the phone file system, and the path is `/usr/libexec/debugserver`.
 * If you have any other questions, please submit an issue
 
 # Background
