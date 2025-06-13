@@ -3,9 +3,13 @@ THEOS_DEVICE_PORT = 2222
 
 ARCHS = arm64 arm64e
 
+ifeq ($(THEOS_PACKAGE_SCHEME), rootless)
+TARGET = iphone:clang:14.5:15.0 # theos includes the iOS 14.5 SDK by default, it's ok
+else
 TARGET = iphone:clang:14.5:9.0
-INSTALL_TARGET_PROCESSES = lockdownd
+endif
 
+INSTALL_TARGET_PROCESSES = lockdownd
 
 include $(THEOS)/makefiles/common.mk
 

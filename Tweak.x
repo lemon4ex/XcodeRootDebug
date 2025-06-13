@@ -3,6 +3,7 @@
 #import <Foundation/NSUserDefaults+Private.h>
 #include <unistd.h>
 #include <substrate.h>
+#include <rootless.h>
 
 extern char **environ;
 
@@ -15,12 +16,12 @@ static NSString *debugserverPath;
 static BOOL isRootUser;
 
 static void reloadSettings() {
-	NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:@"/private/var/mobile/Library/Preferences/com.byteage.xcoderootdebug.plist"];
+	NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.byteage.xcoderootdebug.plist")];
 	NSNumber * enabledValue = (NSNumber *)[settings objectForKey:@"enabled"];
 	enabled = (enabledValue)? [enabledValue boolValue] : YES;
 	debugserverPath = [settings objectForKey:@"debugserverPath"];
 	if(!debugserverPath.length) {
-		debugserverPath = @"/usr/bin/debugserver";
+		debugserverPath = ROOT_PATH_NS(@"/usr/bin/debugserver");
 	}
 	NSNumber * isRootUserValue = (NSNumber *)[settings objectForKey:@"isRootUser"];
 	isRootUser = (isRootUserValue)? [isRootUserValue boolValue] : YES;
